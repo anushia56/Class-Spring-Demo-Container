@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!-- <bean id="alien" class="bt.edu.gcit.Alien"></bean> -->
+    <!-- <bean id="alien" class="bt.edu.gcit.Alien" scope = "prototype"></bean>    -->
+
+    <!-- //when obj is created it calles setAge -->
+
+    <!-- autowire: iIt automatically injects a bean into a property by matching the property 
+    name with a bean ID.
+
+ -->
+    <bean id="alien" class="bt.edu.gcit.Alien" autowire='byType'>
+            <!-- <property name="comp" ref="comp"></property>  -->
+
+        <!-- INNER bean: bean registered inside another bean -->
+            <property name="comp">
+                <bean id="comp" class="bt.edu.gcit.Laptop" ></bean>
+            </property> 
+
+    <!-- Setter Injection -->
+        <!-- Injecting primitive values(config data) -->
+        <!-- <property name="age" value="32"></property>  -->
+        <!-- Injecting dependencies(other obj) -->
+        <!-- The <property> tag is used to inject the Laptop bean into Alien. -->
+        <!-- <property name="lap" ref="laptop"></property>  -->
+    
+    <!-- Constructor Injection -->
+    
+        <!-- <constructor-arg type="bt.edu.gcit.Laptop" ref = "laptop"/> -->
+        <!-- <constructor-arg ref = "desktop"/> -->
+        <!-- for salary -->
+        <!-- <constructor-arg  index ="2" value = "1000"/> -->
+        <!-- for age -->
+        <!-- <constructor-arg index ="0" value = "32"/> -->
+
+    </bean>   
+
+    <!-- autowire -->
+    <!-- <bean id="comp" class="bt.edu.gcit.Laptop" lazy-init="true" ></bean> -->
+    <!-- <bean id="comp1" class="bt.edu.gcit.Desktop" primary="true"></bean> -->
+
+    <!-- <bean id="desktop" class="bt.edu.gcit.Desktop"></bean> -->
+
+</beans>
